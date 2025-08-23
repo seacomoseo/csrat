@@ -1,0 +1,100 @@
+<div class="container">
+    <p class="badge text-bg-secondary">modelo teórico</p>
+    <h1 class="h2">Tiro Parabólico</h1>
+    <p class="lead">Calcula la velocidad mínima de proyección de un vehículo en un tiro parabólico.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/resultado-parabolico" hx-target="#resultado-parabolico" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="distancia" class="form-label">Distancia de proyección (en metros)</label>
+                            <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Ej: 30">
+                        </div>
+                        <div class="mb-3">
+                            <label for="acgp" class="form-label">Altura del centro de gravedad del peatón de pie (en metros)</label>
+                            <input type="text" class="form-control" id="acgp" name="acgp" placeholder="Ej: 1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="acgpt" class="form-label">Altura del centro de gravedad del peatón tumbado (en metros)</label>
+                            <input type="text" class="form-control" id="acgpt" name="acgpt" placeholder="Ej: 1.5">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-parabolico">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <p class="h4 mb-0"><span class="fw-bold">5.54 m/s</span> (19.94 km/h)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Fórmula
+                </div>
+                <div class="card-body">
+                    <p>La velocidad se calcula con la siguiente fórmula:</p>
+                    <math class="alert alert-light" display="block">
+                        <mi>V</mi>
+                        <mo>=</mo>
+                        <msqrt>
+                            <mfrac>
+                                <mrow>
+                                    <mi>g</mi>
+                                    <mo>⋅</mo>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                </mrow>
+                                <mrow>
+                                    <mn>2</mn>
+                                    <mo>⋅</mo>
+                                    <msup>
+                                        <mi>cos</mi>
+                                        <mn>2</mn>
+                                    </msup>
+                                    <mo>(</mo>
+                                    <mi>α</mi>
+                                    <mo>)</mo>
+                                    <mo>⋅</mo>
+                                    <mo>(</mo>
+                                    <mi>x</mi>
+                                    <mo>⋅</mo>
+                                    <mi>tan</mi>
+                                    <mo>(</mo>
+                                    <mi>α</mi>
+                                    <mo>)</mo>
+                                    <mo>-</mo>
+                                    <mi>y</mi>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mfrac>
+                        </msqrt>
+                    </math>
+                    <p>Donde:</p>
+                    <ul>
+                        <li><b>V</b> = Velocidad (m/s)</li>
+                        <li><b>g</b> = Aceleración de la gravedad (9.81 m/s²)</li>
+                        <li><b>x</b> = Alcance (m)</li>
+                        <li><b>y</b> = Altura (m)</li>
+                        <li><b>α</b> = Ángulo de tiro (grados)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

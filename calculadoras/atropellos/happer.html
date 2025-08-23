@@ -1,0 +1,72 @@
+<div class="container">
+    <p class="badge text-bg-secondary">modelo empírico</p>
+    <h1 class="h2">Cálculo de la Velocidad de Atropello con el Método Happer</h1>
+    <p class="lead">Calcula la velocidad mínima de atropello según el método Happer.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/resultado-happer" hx-target="#resultado-happer" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="distancia" class="form-label">Distancia de proyección del peatón (D) en metros</label>
+                            <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Ej: 5">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-happer">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <ul class="h4 mb-0">
+                            <li>Frontal: <span class="fw-bold">25.09 km/h</span> ± 10'5 km/h</li>
+                            <li>Con Volteo: <span class="fw-bold">25.80 km/h</span> ± 9 km/h</li>
+                            <li>Combinados: <span class="fw-bold">25.60 km/h</span> ± 9'5 km/h</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Explicación
+                </div>
+                <div class="card-body">
+                    <p>El método Happer proporciona una fórmula para estimar la velocidad de un vehículo en un atropello basándose en la distancia de proyección del peatón.</p>
+                    <!-- No image provided for Happer method in the original files -->
+                    <table class="table table-bordered table-striped table-hover align-middle caption-top">
+                        <thead class="table-light-subtle">
+                            <tr>
+                                <th scope="col">PROYECCIÓN</th>
+                                <th scope="col" class="text-center">EXPRESIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-nowrap">FRONTAL</th>
+                                <td class="formula"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a 11.4 por raíz de D menos 0.4"><mi>V</mi><mo>=</mo><mn>11.4</mn><mo>&#x22C5;</mo><msqrt><mi>D</mi></msqrt><mo>-</mo><mn>0.4</mn></math></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-nowrap">CON VOLTEO</th>
+                                <td class="formula"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a 11.4 por raíz de D menos 0.4"><mi>V</mi><mo>=</mo><mn>12.7</mn><mo>&#x22C5;</mo><msqrt><mi>D</mi></msqrt><mo>-</mo><mn>2.6</mn></math></td>
+                            </tr>
+                            <tr>
+                                <th>COMBINADOS</th>
+                                <td class="formula"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a 11.4 por raíz de D menos 0.4"><mi>V</mi><mo>=</mo><mn>12.3</mn><mo>&#x22C5;</mo><msqrt><mi>D</mi></msqrt><mo>-</mo><mn>1.9</mn></math></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

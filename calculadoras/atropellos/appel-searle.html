@@ -1,0 +1,90 @@
+<div class="container">
+    <h1 class="h2">Velocidad mínima de atropello con el método de Appel-Searle corregido</h1>
+    <p class="lead">Calcula la velocidad mínima de atropello utilizando el método de Appel-Searle corregido.</p>
+
+    <form id="formulario-y-respuesta" hx-post="/htmx/appel-searle" hx-swap="outerHTML" hx-target="#formulario-y-respuesta">
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        Entrada de Datos
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="distancia" class="form-label">Distancia (D) de proyección del peatón en metros</label>
+                            <input id="distancia" name="distancia" class="form-control" placeholder="distancia en metros" title="distancia de proyección del peatón en metros" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="coeficiente-rozamiento" class="form-label">Coeficiente de rozamiento (µ) entre el peatón y la superficie</label>
+                            <input id="coeficiente-rozamiento" name="coeficiente-rozamiento" class="form-control" placeholder="Ej: 0.7" value="0.8" title="Coeficiente de rozamiento entre el peatón y la superficie" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        CÁLCULO DE LA VELOCIDAD DEL VEHÍCULO EN EL MOMENTO DEL ATROPELLO (V<sub>v</sub>)
+                    </div>
+                    <div class="card-body">
+                        <p>Durante todos estos cálculos, hemos llegado a averiguar el valor de la velocidad mínima a la que salió despedido el peatón (velocidad de proyección), pero lo que realmente nos interesa, es la velocidad a la que circulaba el vehículo en el momento del atropello.</p>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="4">Eficacia de proyección según Searle</th>
+                                </tr>
+                                <tr>
+                                    <th>Peatón</th>
+                                    <th>Frontal del vehículo</th>
+                                    <th>Eficacia de proyección %</th>
+                                    <th>Velocidad del vehículo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th rowspan="2">Adultos</th>
+                                    <th>Bajo</th>
+                                    <td>64.0</td>
+                                    <td><math><msub><mi>V</mi><mtext>v</mtext></msub><mo>=</mo><msub><mi>V</mi><mtext>p</mtext></msub><mo>*</mo><mn>1.5625</mn></math></td>
+                                </tr>
+                                <tr>
+                                    <th>Alto</th>
+                                    <td>74.4</td>
+                                    <td><math><msub><mi>V</mi><mtext>v</mtext></msub><mo>=</mo><msub><mi>V</mi><mtext>p</mtext></msub><mo>*</mo><mn>1.1344</mn></math></td>
+                                </tr>
+                                <tr>
+                                    <th rowspan="2">Niños</th>
+                                    <th>Bajo</th>
+                                    <td>72.7</td>
+                                    <td><math><msub><mi>V</mi><mtext>v</mtext></msub><mo>=</mo><msub><mi>V</mi><mtext>p</mtext></msub><mo>*</mo><mn>1.1376</mn></math></td>
+                                </tr>
+                                <tr>
+                                    <th>Alto</th>
+                                    <td>83.1</td>
+                                    <td><math><msub><mi>V</mi><mtext>v</mtext></msub><mo>=</mo><msub><mi>V</mi><mtext>p</mtext></msub><mo>*</mo><mn>1.2034</mn></math></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        CÁLCULO DE LA VELOCIDAD DEL VEHÍCULO EN CASO DE QUE HAYA HUELLA DE FRENADA
+                    </div>
+                    <div class="card-body">
+                        <p>Este cálculo se realiza en el caso de que haya una huella de frenada antes del atropello y quisiéramos saber a qué velocidad circulaba el vehículo justo antes de que el conductor pisara el pedal del freno.</p>
+                        <div class="mb-3">
+                            <label for="distancia-frenada" class="form-label">Longitud (d) de la huella de frenado en metros</label>
+                            <input id="distancia-frenada" name="distancia-frenada" class="form-control" placeholder="longitud en metros" title="longitud de frenada" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label for="coefroz-vehiculo" class="form-label">Coeficiente de rozamiento vehículo-suelo (µ) (0.8)</label>
+                            <input id="coefroz-vehiculo" name="coefroz-vehiculo" class="form-control" placeholder="Ej: 0.8" value="0.8" title="Coeficiente de rozamiento vehiculo-suelo" type="text">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" value="calcular">Calcular</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,101 @@
+<div class="container">
+    <h1 class="h2">Caso Típico de Atropello</h1>
+    <p class="lead">Calcula diferentes valores para un caso típico de atropello con frenada.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Descripción del Caso
+                </div>
+                <div class="card-body">
+                    <p>Conductor de un vehículo que al circular por una vía pública, observa a un peatón irrumpir en la calzada, por lo que acciona el pedal del freno pero termina atropellando al peatón. Al ocurrir esto, el vehículo deja una huella de frenada hasta la zona de impacto con el peatón y una huella de frenado o desplazamiento posterior al atropello hasta que el vehículo se detiene.</p>
+                    <p>Se supone que el peatón cruza perpendicularmente al eje longitudinal de la calzada.</p>
+                    <h6>Se calculará:</h6>
+                    <ol>
+                        <li>Velocidad del vehículo en el momento de impactar con el peatón.</li>
+                        <li>Velocidad del vehículo antes de empezar a frenar (bloqueo de frenos).</li>
+                        <li>Distancia desde la que el conductor observó al peatón.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Abreviaturas
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li><b>T<sub>r</sub></b> = Tiempo de reacción del conductor.</li>
+                        <li><b>d<sub>R</sub></b> = Distancia recorrida en el tiempo de reacción del conductor.</li>
+                        <li><b>d<sub>Rf</sub></b> = Distancia recorrida en el tiempo de reacción de frenos (0'25 sg)</li>
+                        <li><b>d<sub>F1</sub></b> = Distancia recorrida en la primera frenada (antes del atropello)</li>
+                        <li><b>d<sub>F2</sub></b> = Distancia recorrida en la segunda frenada (después del atropello)</li>
+                        <li><b>d<sub>observación</sub></b> = Distancia desde la que el conductor observa al peatón.</li>
+                        <li><b>V<sub>PPR</sub></b> = Velocidad en el punto de percepción real (cuando el conductor observa al peatón</li>
+                        <li><b>V<sub>PR</sub></b> = Velocidad en el punto de accionar el freno.</li>
+                        <li><b>V<sub>Pf</sub></b> = Velocidad en el punto de empezar a marcar huella (bloqueo de frenos).</li>
+                        <li><b>V<sub>Pi</sub></b> = Velocidad en el punto de impacto.</li>
+                        <li><b>V<sub>f</sub></b> = Velocidad final (0 km/h).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Cálculos
+                </div>
+                <div class="card-body">
+                    <form id="form" hx-post="/htmx/caso-tipico" hx-swap="outerHTML" hx-target="#resultado-caso-tipico">
+                        <fieldset>
+                            <legend>1. Velocidad del vehículo en el momento de impactar con el peatón</legend>
+                            <div class="mb-3">
+                                <label for="coef-roz" class="form-label">Coeficiente de rozamiento (µ)</label>
+                                <input id="coef-roz" name="coef-roz" class="form-control" placeholder="Ej: 0.8" require value="0.8">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tipo-pendiente" class="form-label">Tipo de pendiente</label>
+                                <select id="tipo-pendiente" name="tipo-pendiente" class="form-select">
+                                    <option value>--- Elegir ---</option>
+                                    <option value="s">sin pendiente</option>
+                                    <option value="a">ascendente</option>
+                                    <option value="d">descendente</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pendiente" class="form-label">Valor de la pendiente (%)</label>
+                                <input id="pendiente" name="pendiente" class="form-control" placeholder="Ej: 3" require>
+                            </div>
+                            <div class="mb-3">
+                                <label for="frenada-1" class="form-label">Distancia recorrida antes de atropellar al peatón</label>
+                                <input id="frenada-1" name="frenada-1" class="form-control" placeholder="Ej: 5" require>
+                            </div>
+                            <div class="mb-3">
+                                <label for="frenada-2" class="form-label">Distancia recorrida después de atropellar al peatón</label>
+                                <input id="frenada-2" name="frenada-2" class="form-control" placeholder="Ej: 5" require>
+                            </div>
+                        </fieldset>
+                        <button class="btn btn-primary" type="submit">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-caso-tipico">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <p>Velocidad de atropello: <span class="fw-bold">8.86</span>.</p>
+                        <p>Velocidad antes del bloqueo de frenos Vpf. Para no despreciar la distancia que recorre después de pisar el freno y antes de marcar huella, le damos a la primera 1 metro de distancia: <span class="fw-bold">13.14</span></p>
+                        <p>Primero calculamos el coeficiente de rozamiento corregido según la pendiente.</p>
+                        <p>Conocemos la huella de frenada post-impacto, que es de <span class="fw-bold">5</span> y así utilizar el principio de conservación de la energia</p>
+                        <p>Distancia desde la que el conductor observó al peatón</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>

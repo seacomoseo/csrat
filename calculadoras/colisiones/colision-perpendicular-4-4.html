@@ -1,0 +1,302 @@
+<div class="container">
+    <h1 class="h2">Colisión Fronto-Lateral</h1>
+    <p class="lead">Calcula la velocidad de impacto entre dos vehículos de cuatro ruedas en una colisión fronto-lateral.</p>
+
+    <form id="formulario" hx-post="/htmx/resultado-colision-fronto-lateral" hx-target="#salida-datos" hx-swap="outerHTML">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="croquis-tab" data-bs-toggle="tab" data-bs-target="#croquis" type="button" role="tab" aria-controls="croquis" aria-selected="true">Croquis y Datos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="post-impacto-tab" data-bs-toggle="tab" data-bs-target="#post-impacto" type="button" role="tab" aria-controls="post-impacto" aria-selected="false">Fase Post-Impacto</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pre-impacto-tab" data-bs-toggle="tab" data-bs-target="#pre-impacto" type="button" role="tab" aria-controls="pre-impacto" aria-selected="false">Fase Pre-Impacto</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="velocidades-tab" data-bs-toggle="tab" data-bs-target="#velocidades" type="button" role="tab" aria-controls="velocidades" aria-selected="false">Velocidades</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="espacios-tiempos-tab" data-bs-toggle="tab" data-bs-target="#espacios-tiempos" type="button" role="tab" aria-controls="espacios-tiempos" aria-selected="false">Espacios y Tiempos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="aceleraciones-tab" data-bs-toggle="tab" data-bs-target="#aceleraciones" type="button" role="tab" aria-controls="aceleraciones" aria-selected="false">Aceleraciones</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="croquis" role="tabpanel" aria-labelledby="croquis-tab">
+                
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "A"</div>
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Velocidad de circulación de la vía limitada a:</td>
+                            <td><input id="croquis-datos-vel-limit-A" name="croquis-datos-vel-limit-A" class="form-control" placeholder="límite de velocidad" require title="en km/h"></td>
+                            <td> km/h</td>
+                        </tr>
+                        <tr>
+                            <td>Masa del vehículo y ocupantes (en kg)</td>
+                            <td><input id="croquis-datos-peso-A" name="croquis-datos-peso-A" class="form-control" placeholder="masa total" require title="en kg"></td>
+                        </tr>
+                        <tr>
+                            <td>Ángulo de entrada</td>
+                            <td><input id="croquis-datos-angulo-entrada-e-A" name="croquis-datos-angulo-entrada-e-A" class="form-control" placeholder="ángulo de entrada" require title="en grados"></td>
+                        </tr>
+                        <tr>
+                            <td>Ángulo de salida</td>
+                            <td><input id="croquis-datos-angulo-salida-s-A" name="croquis-datos-angulo-salida-s-A" class="form-control" placeholder="ángulo salida" require title="en grados"></td>
+                        </tr>
+                        <tr>
+                            <td>Distancia de frenada preimpacto (en metros)</td>
+                            <td><input id="croquis-datos-huella-frenada-A" name="croquis-datos-huella-frenada-A" class="form-control" placeholder="huella frenada" require title="en metros"></td>
+                        </tr>
+                        <tr>
+                            <td>Coeficiente de rozamiento de la frenada (µ)</td>
+                            <td><input id="croquis-datos-coef-frenada-A" name="croquis-datos-coef-frenada-A" class="form-control" placeholder="Ej: 0.8" value="0.8" require title=""></td>
+                        </tr>
+                        <tr>
+                            <td>Batalla del vehículo (en mm)</td>
+                            <td><input id="croquis-datos-batalla-A" name="croquis-datos-batalla-A" class="form-control" placeholder="batalla" require title="en mm"></td>
+                        </tr>
+                        <tr>
+                            <td>Tiempo de reacción del conductor en sg (0 si no frena)</td>
+                            <td><input id="croquis-datos-tiempo-reaccion-A" name="croquis-datos-tiempo-reaccion-A" class="form-control" placeholder="introducir 0 si no frena" require title="en segundos"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "B"</div>
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Velocidad de circulación de la vía limitada a:</td>
+                            <td><input id="croquis-datos-vel-limit-B" name="croquis-datos-vel-limit-B" class="form-control" placeholder="límite de velocidad" require title="en km/h"></td>
+                            <td> km/h</td>
+                        </tr>
+                        <tr>
+                            <td>Masa del vehículo y ocupantes (en kg)</td>
+                            <td><input id="croquis-datos-peso-B" name="croquis-datos-peso-B" class="form-control" placeholder="masa total" require title="en kg"></td>
+                        </tr>
+                        <tr>
+                            <td>Ángulo de entrada</td>
+                            <td><input id="croquis-datos-angulo-entrada-e-B" name="croquis-datos-angulo-entrada-e-B" class="form-control" placeholder="ángulo de entrada" require title="en grados"></td>
+                        </tr>
+                        <tr>
+                            <td>Ángulo de salida</td>
+                            <td><input id="croquis-datos-angulo-salida-s-B" name="croquis-datos-angulo-salida-s-B" class="form-control" placeholder="ángulo salida" require title="en grados"></td>
+                        </tr>
+                        <tr>
+                            <td>Distancia de frenada preimpacto (en metros)</td>
+                            <td><input id="croquis-datos-huella-frenada-B" name="croquis-datos-huella-frenada-B" class="form-control" placeholder="huella frenada" require title="en metros"></td>
+                        </tr>
+                        <tr>
+                            <td>Coeficiente de rozamiento de la frenada (µ)</td>
+                            <td><input id="croquis-datos-coef-frenada-B" name="croquis-datos-coef-frenada-B" class="form-control" placeholder="Ej: 0.8" value="0.8" require title=""></td>
+                        </tr>
+                        <tr>
+                            <td>Batalla del vehículo (en mm)</td>
+                            <td><input id="croquis-datos-batalla-B" name="croquis-datos-batalla-B" class="form-control" placeholder="batalla" require title="en mm"></td>
+                        </tr>
+                        <tr>
+                            <td>Tiempo de reacción del conductor en sg (0 si no frena)</td>
+                            <td><input id="croquis-datos-tiempo-reaccion-B" name="croquis-datos-tiempo-reaccion-B" class="form-control" placeholder="introducir 0 si no frena" require title="en segundos"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+            <div class="tab-pane fade" id="post-impacto" role="tabpanel" aria-labelledby="post-impacto-tab">
+                
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "A"</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Distancia de desplazamiento post-impacto (en metros)</label>
+                    <input name="post-impacto-distancia-A" class="form-control" placeholder="distancia">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Coeficiente de rozamiento en la fase post-impacto (µ)</label>
+                    <input name="post-impacto-coef-roz-A" class="form-control" placeholder="Ej: 0.8" value="0.8">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Trabajo de deformación (en Julios)</label>
+                    <input name="post-impacto-trabajo-deformacion-A" class="form-control" placeholder="trabajo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "B"</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Distancia de desplazamiento post-impacto (en metros)</label>
+                    <input name="post-impacto-distancia-B" class="form-control" placeholder="distancia">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Coeficiente de rozamiento en la fase post-impacto (µ)</label>
+                    <input name="post-impacto-coef-roz-B" class="form-control" placeholder="Ej: 0.8" value="0.8">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Trabajo de deformación (en Julios)</label>
+                    <input name="post-impacto-trabajo-deformacion-B" class="form-control" placeholder="trabajo">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+            <div class="tab-pane fade" id="pre-impacto" role="tabpanel" aria-labelledby="pre-impacto-tab">
+                
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "A"</div>
+            <div class="card-body">
+                <p>Energía cinética de la velocidad de entrada a la colisión: <span id="pre-impacto-energia-cinetica-A"></span> Julios</p>
+                <p>Energía disipada antes del impacto, según la huella de frenada: <span id="pre-impacto-energia-disipada-A"></span> Julios</p>
+                <p>Energía total consumida por el vehículo "A": <span id="pre-impacto-energia-total-A"></span> Julios</p>
+                <p>Velocidad al marcar la huella de frenada con la acción del freno: <span id="pre-impacto-velocidad-frenada-A"></span> m/s (<span id="pre-impacto-velocidad-frenada-kmh-A"></span> km/h)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "B"</div>
+            <div class="card-body">
+                <p>Energía cinética de la velocidad de entrada a la colisión: <span id="pre-impacto-energia-cinetica-B"></span> Julios</p>
+                <p>Energía disipada antes del impacto, según la huella de frenada: <span id="pre-impacto-energia-disipada-B"></span> Julios</p>
+                <p>Energía total consumida por el vehículo "B": <span id="pre-impacto-energia-total-B"></span> Julios</p>
+                <p>Velocidad al marcar la huella de frenada con la acción del freno: <span id="pre-impacto-velocidad-frenada-B"></span> m/s (<span id="pre-impacto-velocidad-frenada-kmh-B"></span> km/h)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+            <div class="tab-pane fade" id="velocidades" role="tabpanel" aria-labelledby="velocidades-tab">
+                
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "A"</div>
+            <div class="card-body">
+                <p>Velocidad de circulación (o velocidad en el caso que no haya frenado): <span id="velocidades-circulacion-A"></span> m/s (<span id="velocidades-circulacion-kmh-A"></span> km/h)</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "B"</div>
+            <div class="card-body">
+                <p>Velocidad de circulación (o velocidad en el caso que no haya frenado): <span id="velocidades-circulacion-B"></span> m/s (<span id="velocidades-circulacion-kmh-B"></span> km/h)</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+            <div class="tab-pane fade" id="espacios-tiempos" role="tabpanel" aria-labelledby="espacios-tiempos-tab">
+                
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "A"</div>
+            <div class="card-body">
+                <p>Distancia recorrida en los 0'25 sg. de acción de frenos: <span id="espacios-tiempos-distancia-recorrida-A"></span> metros</p>
+                <p>Distancia total de frenada: <span id="espacios-tiempos-distancia-frenada-A"></span> metros</p>
+                <p>Distancia de reacción: <span id="espacios-tiempos-distancia-reaccion-A"></span> metros</p>
+                <p>Distancia desde el punto de percepción hasta la colisión: <span id="espacios-tiempos-distancia-percepcion-colision-A"></span> metros</p>
+                <p>Tiempo de frenada: <span id="espacios-tiempos-tiempo-frenada-A"></span> segundos</p>
+                <p>Tiempo de reacción: <span id="espacios-tiempos-tiempo-reaccion-A"></span> segundos</p>
+                <p>Tiempo desde el punto de percepción hasta la colisión: <span id="espacios-tiempos-tiempo-percepcion-colision-A"></span> segundos</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "B"</div>
+            <div class="card-body">
+                <p>Distancia recorrida en los 0'25 sg. de acción de frenos: <span id="espacios-tiempos-distancia-recorrida-B"></span> metros</p>
+                <p>Distancia total de frenada: <span id="espacios-tiempos-distancia-frenada-B"></span> metros</p>
+                <p>Distancia de reacción: <span id="espacios-tiempos-distancia-reaccion-B"></span> metros</p>
+                <p>Distancia desde el punto de percepción hasta la colisión: <span id="espacios-tiempos-distancia-percepcion-colision-B"></span> metros</p>
+                <p>Tiempo de frenada: <span id="espacios-tiempos-tiempo-frenada-B"></span> segundos</p>
+                <p>Tiempo de reacción: <span id="espacios-tiempos-tiempo-reaccion-B"></span> segundos</p>
+                <p>Tiempo desde el punto de percepción hasta la colisión: <span id="espacios-tiempos-tiempo-percepcion-colision-B"></span> segundos</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+            <div class="tab-pane fade" id="aceleraciones" role="tabpanel" aria-labelledby="aceleraciones-tab">
+                
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "A"</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Distancia entre la señal de STOP o semáforo y el punto de colisión (Introducir 0 si no le afecta)</label>
+                    <input id="aceleraciones-distancia-signal-colision-A" name="aceleraciones-distancia-signal-colision-A" class="form-control" placeholder="distancia" require title="en metros">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tiempo (en sg) que tarda el vehículo en pasar de 0 a 100 km/h según datos técnicos</label>
+                    <input id="aceleraciones-tiempo-0-100-A" name="aceleraciones-tiempo-0-100-A" class="form-control" placeholder="tiempo de 0 a 100 km/h" require title="en segundos">
+                </div>
+                <p>Aceleración máxima por construcción: <span id="aceleraciones-aceleracion-maxima-A"></span> m/s²</p>
+                <p>Tiempo para recorrer el espacio hasta la colisión: <span id="aceleraciones-tiempo-recorrer-espacio-A"></span> sg</p>
+                <p>Aceleración necesaria: <span id="aceleraciones-aceleracion-necesaria-A"></span> m/s²</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">VEHÍCULO "B"</div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Distancia entre la señal de STOP o semáforo y el punto de colisión (Introducir 0 si no le afecta)</label>
+                    <input id="aceleraciones-distancia-signal-colision-B" name="aceleraciones-distancia-signal-colision-B" class="form-control" placeholder="distancia" require title="en metros">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tiempo (en sg) que tarda el vehículo en pasar de 0 a 100 km/h según datos técnicos</label>
+                    <input id="aceleraciones-tiempo-0-100-B" name="aceleraciones-tiempo-0-100-B" class="form-control" placeholder="tiempo de 0 a 100 km/h" require title="en segundos">
+                </div>
+                <p>Aceleración máxima por construcción: <span id="aceleraciones-aceleracion-maxima-B"></span> m/s²</p>
+                <p>Tiempo para recorrer el espacio hasta la colisión: <span id="aceleraciones-tiempo-recorrer-espacio-B"></span> sg</p>
+                <p>Aceleración necesaria: <span id="aceleraciones-aceleracion-necesaria-B"></span> m/s²</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <button class="btn btn-primary" type="submit">Calcular</button>
+        </div>
+    </form>
+
+    <div id="salida-datos" class="mt-4">
+        <!-- Results will be loaded here -->
+    </div>
+</div>

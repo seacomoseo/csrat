@@ -1,0 +1,49 @@
+<div class="container">
+    <p class="badge text-bg-secondary">modelo matemático-teórico</p>
+    <h1 class="h2">Cálculo de la Velocidad de Atropello con el Método Limpert</h1>
+    <p class="lead">Calcula la velocidad de atropello según el método Limpert (solo aplicable cuando el vehículo está frenando).</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/resultado-limpert" hx-target="#resultado-limpert" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="distancia" class="form-label">Distancia de proyección (D) en metros</label>
+                            <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Ej: 5">
+                        </div>
+                        <div class="mb-3">
+                            <label for="coefroz" class="form-label">Coeficiente de rozamiento (µ) del vehículo con la calzada</label>
+                            <input type="text" class="form-control" id="coefroz" name="coefroz" placeholder="Ej: 0.8" value="0.8">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-limpert">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <p class="h4 mb-0"><span class="fw-bold">21.67 km/h</span> ± 4'02 km/h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Explicación
+                </div>
+                <div class="card-body">
+                    <p>El método Limpert se utiliza para calcular la velocidad de atropello cuando el vehículo estaba frenando en el momento del impacto. La fórmula tiene en cuenta tanto la distancia de proyección como el coeficiente de rozamiento.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

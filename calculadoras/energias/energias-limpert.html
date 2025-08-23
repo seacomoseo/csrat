@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="h2">Cálculo de Energías de Deformación con el Método Limpert (4 medidas)</h1>
+    <p class="lead">Calcula las energías de deformación por el método Limpert con 4 medidas.</p>
+
+    <form id="formulario-y-respuesta" hx-post="/htmx/energias-limpert-4" hx-swap="outerHTML" hx-target="#formulario-y-respuesta">
+        <div class="card mb-4">
+            <div class="card-header">
+                Información del Tipo de Colisión
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="tipo-medicion" class="form-label">Tipo de medición</label>
+                    <select id="tipo-medicion" name="tipo-medicion" class="form-select" hx-post="/htmx/energias-limpert-4" hx-swap="outerHTML" hx-target="#form-opcion" hx-trigger="change">
+                        <option value="">---Elegir tipo de medición---</option>
+                        <option value="medicion">Medición de deformaciones</option>
+                        <option value="real">Daños reales</option>
+                    </select>
+                </div>
+                <div id="form-opcion">
+                    <!-- El contenido dinámico del formulario aparecerá aquí -->
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                Resultado
+            </div>
+            <div class="card-body" id="resultado-energias-limpert">
+                <!-- Resultado de ejemplo -->
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">Calcular</button>
+    </form>
+</div>

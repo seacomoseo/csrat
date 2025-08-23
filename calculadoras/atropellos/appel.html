@@ -1,0 +1,140 @@
+<div class="container">
+    <p class="badge text-bg-secondary">modelo empírico</p>
+    <h1 class="h2">Cálculo de la Velocidad de Atropello con el Método Appel</h1>
+    <p class="lead">Calcula la velocidad mínima de atropello según el método Appel.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/resultado-appel" hx-target="#resultado-appel" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="distancia" class="form-label">Distancia de proyección (D) en metros</label>
+                            <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Ej: 5">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo-frontales" class="form-label">Tipo de frontal del vehículo</label>
+                            <select id="frontales" name="tipo-frontales" class="form-select">
+                                <option value="">--- Elegir ---</option>
+                                <option value="Normal/Wedge">Normal/Wedge</option>
+                                <option value="Wedge/Normal">Wedge/Normal</option>
+                                <option value="Bulbous">Bulbous</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo-peaton" class="form-label">Tipo de peatón</label>
+                            <select id="peaton" name="tipo-peaton" class="form-select">
+                                <option value="">--- Elegir ---</option>
+                                <option value="adulto">adulto</option>
+                                <option value="niño">niño</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-appel">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <ul class="h4">
+                            <li>Mínimo: <span class="fw-bold">7.72 m/s</span> (27.79 km/h)</li>
+                            <li>Máximo: <span class="fw-bold">8.45 m/s</span> (30.42 km/h)</li>
+                        </ul>
+                        <p class="mb-0"><span class="fw-bold">Observación:</span> Se obtienen valores bastante aproximados en el caso de niños, pero sobreestima la velocidad en el caso de adultos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Explicación
+                </div>
+                <div class="card-body">
+                    <p>Este método se basa en la relación entre la velocidad del vehículo y la distancia de proyección del peatón. La fórmula varía según el tipo de frontal del vehículo.</p>
+                    <table class="table table-bordered table-striped table-hover align-middle caption-top">
+                        <caption class="text-muted">Relación de Appel — estimación de la velocidad</caption>
+                        <thead class="table-light-subtle">
+                            <tr>
+                                <th scope="col"> </th>
+                                <th scope="col">CARACTERÍSTICAS DEL VEHÍCULO</th>
+                                <th scope="col" class="text-center">VELOCIDAD DEL VEHÍCULO (m/sg)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" rowspan="2" class="text-nowrap fw-semibold">VEHÍCULO</th>
+                                <td>FRONTAL ELEVADO</td>
+                                <td class="formula">
+                                <!-- V = sqrt( D / 0.084 ) -->
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a raíz de D dividido 0.084">
+                                    <mi>V</mi><mo>=</mo>
+                                    <msqrt>
+                                    <mfrac>
+                                        <mi>D</mi>
+                                        <mn>0.084</mn>
+                                    </mfrac>
+                                    </msqrt>
+                                </math>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>FRONTAL BAJO</td>
+                                <td class="formula">
+                                <!-- V = sqrt( D / 0.065 ) -->
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a raíz de D dividido 0.065">
+                                    <mi>V</mi><mo>=</mo>
+                                    <msqrt>
+                                    <mfrac>
+                                        <mi>D</mi>
+                                        <mn>0.065</mn>
+                                    </mfrac>
+                                    </msqrt>
+                                </math>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" rowspan="2" class="text-nowrap fw-semibold">PEATÓN</th>
+                                <td>ADULTO</td>
+                                <td class="formula">
+                                <!-- V = sqrt( D / 0.070 ) -->
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a raíz de D dividido 0.070">
+                                    <mi>V</mi><mo>=</mo>
+                                    <msqrt>
+                                    <mfrac>
+                                        <mi>D</mi>
+                                        <mn>0.070</mn>
+                                    </mfrac>
+                                    </msqrt>
+                                </math>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>NIÑO</td>
+                                <td class="formula">
+                                <!-- V = sqrt( D / 0.088 ) -->
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a raíz de D dividido 0.088">
+                                    <mi>V</mi><mo>=</mo>
+                                    <msqrt>
+                                    <mfrac>
+                                        <mi>D</mi>
+                                        <mn>0.088</mn>
+                                    </mfrac>
+                                    </msqrt>
+                                </math>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

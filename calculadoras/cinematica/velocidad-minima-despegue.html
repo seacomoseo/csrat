@@ -1,0 +1,70 @@
+<div class="container">
+    <h1 class="h2">Velocidad Mínima de Despegue</h1>
+    <p class="lead">Calcula la velocidad mínima de un vehículo para que se produzca un despegue en un cambio de rasante.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/resultado-velocidad-minima-despegue" hx-target="#resultado-velocidad-minima-despegue" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="radio" class="form-label">Radio del cambio de rasante (en metros)</label>
+                            <input type="text" class="form-control" id="radio" name="radio" placeholder="Ej: 30">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-velocidad-minima-despegue">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <p class="h4 mb-0"><span class="fw-bold">7.0 m/s</span> (25.21 km/h)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Imagen de Referencia
+                </div>
+                <div class="card-body">
+                    <img src="img/despegueJPG.jpg" class="img-fluid" alt="Velocidad mínima de despegue">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Fórmula
+                </div>
+                <div class="card-body">
+                    <p>La velocidad mínima de despegue se calcula con la siguiente fórmula:</p>
+                    <math class="alert alert-light" display="block">
+                        <msub>
+                            <mi>V</mi>
+                            <mi>min</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <msqrt>
+                            <mi>g</mi>
+                            <mo>⋅</mo>
+                            <mi>R</mi>
+                        </msqrt>
+                    </math>
+                    <p>Donde:</p>
+                    <ul>
+                        <li><b>V<sub>min</sub></b> = Velocidad mínima (m/s)</li>
+                        <li><b>g</b> = Aceleración de la gravedad (9.81 m/s²)</li>
+                        <li><b>R</b> = Radio del cambio de rasante (m)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

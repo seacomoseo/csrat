@@ -1,0 +1,74 @@
+<div class="container">
+    <p class="badge text-bg-secondary">modelo matemático-teórico</p>
+    <h1 class="h2">Cálculo de la Velocidad de Atropello con el Método Collins</h1>
+    <p class="lead">Calcula la velocidad mínima de atropello según el método Collins (solo aplicable en proyecciones frontales).</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/resultado-collins" hx-target="#resultado-collins" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="distancia" class="form-label">Distancia de proyección del peatón (D) en metros</label>
+                            <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Ej: 5">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-collins">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <ul class="h4">
+                            <li>1º resultado: <span class="fw-bold">21.58 km/h</span></li>
+                            <li>2º resultado: <span class="fw-bold">-47.07 km/h</span></li>
+                        </ul>
+                        <p class="mb-0"><span class="fw-bold">Observación:</span> la velocidad que resulte negativa, no será válida.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Explicación
+                </div>
+                <div class="card-body">
+                    <p>Se sustituyen los valores introducidos en la fórmula anterior y se prepara para resolver la ecuación de segundo grado que se obtiene, siendo la velocidad del vehículo la incógnita de dicha ecuación.</p>
+                    <p>El método de Collins se basa en una fórmula empírica que relaciona la distancia de proyección del peatón con la velocidad del vehículo. Es importante destacar que este método solo es aplicable a proyecciones frontales.</p>
+                    <math class="alert alert-light" xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="Fórmula de Collins">
+                        <mi>D</mi>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mrow>
+                            <msub><mi>V</mi><mi>v</mi></msub>
+                            <mo>&#x2062;</mo>
+                            <msqrt><mi>H</mi></msqrt>
+                            </mrow>
+                            <mn>7.97</mn>
+                        </mfrac>
+                        <mo>+</mo>
+                        <mfrac>
+                            <msup>
+                            <msub><mi>V</mi><mi>v</mi></msub>
+                            <mn>2</mn>
+                            </msup>
+                            <mrow>
+                            <mn>254</mn>
+                            <mo>&#x2062;</mo>
+                            <mi>μ</mi>
+                            </mrow>
+                        </mfrac>
+                    </math>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

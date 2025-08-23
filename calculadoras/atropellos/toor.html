@@ -1,0 +1,78 @@
+<div class="container">
+    <p class="badge text-bg-secondary">modelo empírico</p>
+    <h1 class="h2">Cálculo de la Velocidad de Atropello con el Método Toor</h1>
+    <p class="lead">Calcula la velocidad mínima de atropello según el método Toor.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/resultado-toor" hx-target="#resultado-toor" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="distancia" class="form-label">Distancia de proyección del peatón (D) en metros</label>
+                            <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Ej: 5">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-toor">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <ul class="h4 mb-0">
+                            <li>Frontal: <span class="fw-bold">22.02 km/h</span></li>
+                            <li>Con Volteo: <span class="fw-bold">24.63 km/h</span></li>
+                            <li>Combinados: <span class="fw-bold">23.75 km/h</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Explicación
+                </div>
+                <div class="card-body">
+                    <p>El método Toor es otro de los métodos empíricos utilizados para estimar la velocidad de un vehículo en un atropello, basándose en la distancia de proyección del peatón.</p>
+                    <table class="table table-bordered table-striped table-hover align-middle caption-top">
+                        <caption class="text-muted">
+                            Intervalo de predicción:
+                            <ul>
+                                <li>Entre el 15 y el 85 percentil: ± 7.7 km/h</li>
+                                <li>Entre el 5 y el 95 percentil: ± 12.2 km/h</li>
+                            </ul>
+                        </caption>
+                        <thead class="table-light-subtle">
+                            <tr>
+                                <th scope="col">PROYECCIÓN</th>
+                                <th scope="col" class="text-center">EXPRESIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-nowrap">FRONTAL</th>
+                                <td class="formula"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a 8.25 por D elevado a 0.61"><mi>V</mi><mo>=</mo><mn>8.25</mn><mo>&#x22C5;</mo><msup><mi>D</mi><mn>0.61</mn></msup></math></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-nowrap">CON VOLTEO</th>
+                                <td class="formula"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a 9.84 por D elevado a 0.57"><mi>V</mi><mo>=</mo><mn>9.84</mn><mo>&#x22C5;</mo><msup><mi>D</mi><mn>0.57</mn></msup></math></td>
+                            </tr>
+                            <tr>
+                                <th>COMBINADOS</th>
+                                <td class="formula"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V igual a 9.19 por D elevado a 0.59"><mi>V</mi><mo>=</mo><mn>9.19</mn><mo>&#x22C5;</mo><msup><mi>D</mi><mn>0.59</mn></msup></math></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

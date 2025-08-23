@@ -1,2 +1,164 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>pagina-inicio</title><link href="https://csrat-52aac06b5b6c.herokuapp.com/icono.ico" rel="icon" type="image/png"><meta content="Pagina de inicio del proyecto csrat" name="description"><meta content="colisión impacto tráfico accidente accidentes coche coches camión camiones bici bicicletas moto motos" name="keywords"><meta content="consorcio" name="author"><meta content="nosnippet" name="robots"><meta content="pagina-inicio" property="og:title"><meta content="nosnippet" property="og:image"><meta content="Pagina de inicio del proyecto csrat" property="og:description"><link href="css/style.css" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap" rel="stylesheet"><link href="https://fred-wang.github.io/MathFonts/LatinModern/mathfonts.css" rel="stylesheet"><script crossorigin="anonymous" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" src="https://unpkg.com/htmx.org@2.0.0"></script><script src="js/milibjs.js"></script><script src="js/milibTestColisionFrontoLateral.js"></script></head><body><div class="background"><h1 id="miidentificador">CraSh software v. 0.1.2025-08-20T15:00</h1><h6> 2025-08-20T15:53:36</h6><h2>Cinemática y Dinámica<a href="demo.html">.</a><a href="demo-dev.html">.</a></h2><div class="lista"><ul><li><a href="velocidad-limite-curva.html">Velocidad límite en curva</a></li><li><a href="velocidad-minima-despegue.html">Velocidad mínima de despegue</a></li><li><a href="velocidad-minima-desnivel.html">Velocidad mínima al caer por desnivel</a></li><li><a href="velocidad-limite-vuelco.html">Velocidad límite para que se produzca el vuelco</a></li><li><a href="velocidad-minima-despegue-caida.html">Velocidad mínima conociendo el punto de despegue y caída en cambio de rasante</a></li><li><a href="velocidad-en-punto-de-impacto.html">Velocidad a la que se produce un impacto</a></li></ul></div><h2>Atropellos</h2><ul><li><a href="appel-searle.html">Appel-Searle corregido (modelo matemático-teórico)</a></li><li><a href="limpert.html">Limpert (modelo matemático-teórico)</a></li><li><a href="collins.html">Collins (modelo matemático-teórico)</a></li><li><a href="appel.html">Appel (modelo empírico)</a></li><li><a href="evans-smith.html">Evans y Smith (modelo empírico)</a></li><li><a href="happer.html">Happer (modelo empírico)</a></li><li><a href="toor.html">Toor (modelo empírico)</a></li><li><a href="parabolico.html">Método del tiro parabólico (modelo teórico) </a></li><li><a href="caso-tipico.html">Caso típico de atropello</a></li></ul><h2>Alcances</h2><ul><li><a href="alcances.html">Alcances</a></li></ul><h2>Colisiones perpendiculares</h2><ul><li><a href="colision-perpendicular-4-4.html">Colisión de un vehículo de cuatro ruedas contra otro de cuatro ruedas </a><a href="colision-perpendicular-4-4X.html"> *</a></li></ul><h2>Cálculo de velocidad según la energía de deformación (DESARROLLO PENDIENTE)</h2><ul><li><a href="energias-wood.html">Método Wood</a></li><li><a href="energias-limpert.html">Método Limpert de 4 medidas </a><a href="energias-limpert-dev.html">*</a></li><li><a href="energias-limpert-6.html">Método Limpert de 6 medidas</a><a href="energias-limpert-6-dev.html">*</a></li><li><a href="energias-mchenry-2.html">Método McHenry con 2 medidas</a></li><li><a href="energias-mchenry-4.html">Método McHenry con 4 medidas</a></li><li><a href="energias-mchenry-6.html">Método McHenry con 6 medidas</a></li></ul></div></body></html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRAT - Software de Reconstrucción de Accidentes de Tráfico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</head>
+<body class="bg-white-subtle">
+
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-xl-2 me-auto px-3" href="#">CSRAT</a>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <button class="btn btn-link nav-link px-3 shadow-none" id="dark-mode-toggle" title="Modo Oscuro">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8V16Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4V8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16V20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <button class="navbar-toggler d-md-none collapsed order-first" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-xl-2 d-md-block bg-light-subtle sidebar collapse p-0 pt-5">
+                <div class="accordion accordion-flush" id="menu-accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Cinemática y Dinámica
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#menu-accordion">
+                            <div class="accordion-body">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/cinematica/velocidad-limite-curva.html" hx-target="#main-content" hx-swap="innerHTML">Velocidad límite en curva</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/cinematica/velocidad-minima-despegue.html" hx-target="#main-content" hx-swap="innerHTML">Velocidad mínima de despegue</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/cinematica/velocidad-minima-desnivel.html" hx-target="#main-content" hx-swap="innerHTML">Velocidad mínima por desnivel</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/cinematica/velocidad-limite-vuelco.html" hx-target="#main-content" hx-swap="innerHTML">Velocidad límite de vuelco</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/cinematica/velocidad-minima-despegue-caida.html" hx-target="#main-content" hx-swap="innerHTML">Velocidad mínima despegue y caída</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/cinematica/velocidad-en-punto-de-impacto.html" hx-target="#main-content" hx-swap="innerHTML">Velocidad en punto de impacto</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                Atropellos
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#menu-accordion">
+                            <div class="accordion-body">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/appel-searle.html" hx-target="#main-content" hx-swap="innerHTML">Appel-Searle</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/limpert.html" hx-target="#main-content" hx-swap="innerHTML">Limpert</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/collins.html" hx-target="#main-content" hx-swap="innerHTML">Collins</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/appel.html" hx-target="#main-content" hx-swap="innerHTML">Appel</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/evans-smith.html" hx-target="#main-content" hx-swap="innerHTML">Evans-Smith</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/happer.html" hx-target="#main-content" hx-swap="innerHTML">Happer</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/toor.html" hx-target="#main-content" hx-swap="innerHTML">Toor</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/parabolico.html" hx-target="#main-content" hx-swap="innerHTML">Tiro Parabólico</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/atropellos/caso-tipico.html" hx-target="#main-content" hx-swap="innerHTML">Caso típico</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                Colisiones
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#menu-accordion">
+                            <div class="accordion-body">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/colisiones/alcances.html" hx-target="#main-content" hx-swap="innerHTML">Colisiones por alcance</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/colisiones/colision-perpendicular-4-4.html" hx-target="#main-content" hx-swap="innerHTML">Colisión perpendicular (4-4)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                Energías
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#menu-accordion">
+                            <div class="accordion-body">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/energias/energias-limpert.html" hx-target="#main-content" hx-swap="innerHTML">Limpert (4 medidas)</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/energias/energias-limpert-6.html" hx-target="#main-content" hx-swap="innerHTML">Limpert (6 medidas)</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/energias/energias-mchenry-2.html" hx-target="#main-content" hx-swap="innerHTML">McHenry (2 medidas)</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/energias/energias-mchenry-4.html" hx-target="#main-content" hx-swap="innerHTML">McHenry (4 medidas)</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/energias/energias-mchenry-6.html" hx-target="#main-content" hx-swap="innerHTML">McHenry (6 medidas)</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" hx-get="calculadoras/energias/energias-wood.html" hx-target="#main-content" hx-swap="innerHTML">Wood</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="col-md-9 col-xl-10 ms-sm-auto px-md-4 pt-4">
+                <div id="main-content" class="pt-3">
+                    <h1>Bienvenido a CSRAT</h1>
+                    <p class="lead">Selecciona una calculadora del menú de la izquierda para comenzar.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light-subtle col-md-9 ms-md-auto col-md-9 col-xl-10">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-muted text-center text-md-start">
+                    © 2025 CSRAT - Todos los derechos reservados.
+                </div>
+                <div class="col-md-6 text-muted text-center text-md-end">
+                    CraSh software - v0.1. - 2025-08-22T22:00
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const htmlElement = document.documentElement;
+
+        darkModeToggle.addEventListener('click', () => {
+            if (htmlElement.getAttribute('data-bs-theme') === 'dark') {
+                htmlElement.removeAttribute('data-bs-theme');
+            } else {
+                htmlElement.setAttribute('data-bs-theme', 'dark');
+            }
+        });
+        // Auto-collapse #sidebarMenu when clicking a nav link (mobile only)
+        document.addEventListener('click', e => {
+            const link = e.target.closest('#sidebarMenu .nav-link, #sidebarMenu .dropdown-item');
+            if (!link) return;
+            if (link.matches('[data-bs-toggle]')) return; // ignore toggles
+
+            const toggler = document.querySelector('[data-bs-target="#sidebarMenu"]');
+            const isMobile = toggler && window.getComputedStyle(toggler).display !== 'none';
+            if (!isMobile) return
+
+            const collapseEl = document.getElementById('sidebarMenu');
+            if (!collapseEl.classList.contains('show')) return;
+
+            const collapse = bootstrap.Collapse.getOrCreateInstance(collapseEl);
+            collapse.hide();
+        });
+    </script>
+</body>
+</html>

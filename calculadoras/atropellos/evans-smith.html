@@ -1,0 +1,95 @@
+<div class="container">
+    <p class="badge text-bg-secondary">modelo empírico</p>
+    <h1 class="h2">Cálculo de la Velocidad de Atropello con el Método Evans-Smith</h1>
+    <p class="lead">Calcula la velocidad mínima de atropello según el método Evans-Smith.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/resultado-evans-smith" hx-target="#resultado-evans-smith" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="distancia" class="form-label">Distancia de proyección (D) en metros</label>
+                            <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Ej: 5">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-evans-smith">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <ul class="h4 mb-0">
+                            <li>Mínimo: <span class="fw-bold">5.85 m/s</span> (21.06 km/h)</li>
+                            <li>Máximo: <span class="fw-bold">10.17 m/s</span> (36.61 km/h)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Explicación
+                </div>
+                <div class="card-body">
+                    <p>El método de Evans-Smith es otro enfoque para determinar la velocidad de atropello basándose en la distancia de proyección del peatón.</p>
+                    <table class="table table-bordered table-striped table-hover align-middle caption-top">
+                        <caption class="text-muted">La velocidad del vehículo V<sub>v</sub> estará contenida en el siguiente intervalo con un 95&nbsp;% de probabilidad</caption>
+                        <thead class="table-light-subtle">
+                            <tr>
+                                <th scope="col">LÍMITE</th>
+                                <th scope="col" class="text-center">EXPRESIÓN (m/sg)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-nowrap">Inferior</th>
+                                <td class="formula">
+                                    <!-- V_v = 3.58 · sqrt(D) - 2.16 m/sg -->
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V sub v igual a 3.58 por raíz de D menos 2.16 metros por segundo">
+                                        <mrow>
+                                        <msub><mi>V</mi><mi>v</mi></msub>
+                                        <mo>=</mo>
+                                        <mn>3.58</mn>
+                                        <mo>&#x22C5;</mo>
+                                        <msqrt><mi>D</mi></msqrt>
+                                        <mo>-</mo>
+                                        <mn>2.16</mn>
+                                        <mtext>&#x2009;m/sg</mtext>
+                                        </mrow>
+                                    </math>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-nowrap">Superior</th>
+                                <td class="formula">
+                                    <!-- V_v = 3.58 · sqrt(D) + 2.16 m/sg -->
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" aria-label="V sub v igual a 3.58 por raíz de D más 2.16 metros por segundo">
+                                        <mrow>
+                                        <msub><mi>V</mi><mi>v</mi></msub>
+                                        <mo>=</mo>
+                                        <mn>3.58</mn>
+                                        <mo>&#x22C5;</mo>
+                                        <msqrt><mi>D</mi></msqrt>
+                                        <mo>+</mo>
+                                        <mn>2.16</mn>
+                                        <mtext>&#x2009;m/sg</mtext>
+                                        </mrow>
+                                    </math>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

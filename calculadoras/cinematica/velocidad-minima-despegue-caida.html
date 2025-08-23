@@ -1,0 +1,94 @@
+<div class="container">
+    <h1 class="h2">Velocidad Mínima de Despegue y Caída</h1>
+    <p class="lead">Calcula la velocidad mínima de circulación conociendo el punto de despegue y el punto de caída en un cambio de rasante.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/velocidad-minima-despegue-caida" hx-target="#resultado-velocidad-minima-despegue-caida" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="pendiente" class="form-label">Pendiente del cambio de rasante (en %)</label>
+                            <input type="text" class="form-control" id="pendiente" name="pendiente" placeholder="Ej: 10">
+                        </div>
+                        <div class="mb-3">
+                            <label for="alcance" class="form-label">Alcance (distancia de vuelo en metros)</label>
+                            <input type="text" class="form-control" id="alcance" name="alcance" placeholder="Ej: 15">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-velocidad-minima-despegue-caida">
+                    <!-- Resultado de ejemplo -->
+                    <div class="alert alert-success" role="alert">
+                        <p class="h4 mb-0"><span class="fw-bold">6.97 m/s</span> (25.09 km/h)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Imagen de Referencia
+                </div>
+                <div class="card-body">
+                    <img src="img/despegue_aterrizaje_JPG.jpg" class="img-fluid" alt="Despegue y aterrizaje de un vehículo en un cambi de rasante">
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Fórmula
+                </div>
+                <div class="card-body">
+                    <p>La velocidad mínima se calcula con la siguiente fórmula:</p>
+                    <math class="alert alert-light" display="block">
+                        <mi>V</mi>
+                        <mo>=</mo>
+                        <msqrt>
+                            <mfrac>
+                                <mrow>
+                                    <mi>g</mi>
+                                    <mo>⋅</mo>
+                                    <msup>
+                                        <mi>x</mi>
+                                        <mn>2</n>
+                                    </msup>
+                                </mrow>
+                                <mrow>
+                                    <mn>2</mn>
+                                    <mo>⋅</mo>
+                                    <mo>(</mo>
+                                    <mi>y</mi>
+                                    <mo>+</mo>
+                                    <mi>x</mi>
+                                    <mo>⋅</mo>
+                                    <mi>tan</mi>
+                                    <mo>(</mo>
+                                    <mi>α</mi>
+                                    <mo>)</mo>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mfrac>
+                        </msqrt>
+                    </math>
+                    <p>Donde:</p>
+                    <ul>
+                        <li><b>V</b> = Velocidad (m/s)</li>
+                        <li><b>g</b> = Aceleración de la gravedad (9.81 m/s²)</li>
+                        <li><b>x</b> = Alcance (m)</li>
+                        <li><b>y</b> = Altura (se asume 0 en este cálculo)</li>
+                        <li><b>α</b> = Ángulo de la pendiente (grados)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

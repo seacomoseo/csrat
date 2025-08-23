@@ -1,0 +1,90 @@
+<div class="container">
+    <h1 class="h2">Velocidad en el Punto de Impacto</h1>
+    <p class="lead">Calcula la velocidad de un vehículo en el punto de impacto.</p>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/velocidad-en-punto-de-impacto" hx-target="#resultado-velocidad-en-punto-de-impacto" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="peso" class="form-label">Masa del vehículo y ocupantes (en kg)</label>
+                            <input type="text" class="form-control" id="peso" name="peso" placeholder="Ej: 1500">
+                        </div>
+                        <div class="mb-3">
+                            <label for="distancia-desplazamiento" class="form-label">Distancia de desplazamiento post-impacto (en metros)</label>
+                            <input type="text" class="form-control" id="distancia-desplazamiento" name="distancia-desplazamiento" placeholder="Ej: 10">
+                        </div>
+                        <div class="mb-3">
+                            <label for="coef-rozamiento" class="form-label">Coeficiente de rozamiento en la fase post-impacto (µ)</label>
+                            <input type="text" class="form-control" id="coef-rozamiento" name="coef-rozamiento" placeholder="Ej: 0.8" value="0.8">
+                        </div>
+                        <div class="mb-3">
+                            <label for="trabajo-deformacion" class="form-label">Trabajo de deformación (en Julios)</label>
+                            <input type="text" class="form-control" id="trabajo-deformacion" name="trabajo-deformacion" placeholder="Ej: 50000">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-velocidad-en-punto-de-impacto">
+                    <!-- Resultado de ejemplo -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    Fórmula
+                </div>
+                <div class="card-body">
+                    <p>La velocidad en el punto de impacto se calcula a partir de la energía cinética:</p>
+                    <math class="alert alert-light" display="block">
+                        <msub>
+                            <mi>E</mi>
+                            <mi>c</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mfrac>
+                            <mn>1</mn>
+                            <mn>2</mn>
+                        </mfrac>
+                        <mo>⋅</mo>
+                        <mi>m</mi>
+                        <mo>⋅</mo>
+                        <msup>
+                            <mi>v</mi>
+                            <mn>2</mn>
+                        </msup>
+                    </math>
+                    <p>Despejando la velocidad:</p>
+                    <math class="alert alert-light" display="block">
+                        <mi>v</mi>
+                        <mo>=</mo>
+                        <msqrt>
+                            <mfrac>
+                                <mrow>
+                                    <mn>2</mn>
+                                    <mo>⋅</mo>
+                                    <msub>
+                                        <mi>E</mi>
+                                        <mi>c</mi>
+                                    </msub>
+                                </mrow>
+                                <mi>m</mi>
+                            </mfrac>
+                        </msqrt>
+                    </math>
+                    <p>Donde la energía cinética (Ec) se obtiene de la suma del trabajo de rozamiento y el trabajo de deformación.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

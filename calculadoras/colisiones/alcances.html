@@ -1,0 +1,89 @@
+<div class="container">
+    <h1 class="h2">Colisiones por Alcance</h1>
+    <p class="lead">Calcula la velocidad de colisión por alcance.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Datos de Entrada
+                </div>
+                <div class="card-body">
+                    <form hx-post="/htmx/alcances" hx-target="#resultado-alcances" hx-swap="innerHTML">
+                        <div class="mb-3">
+                            <label for="velocidad-alcanzado" class="form-label">Velocidad del vehículo alcanzado (km/h)</label>
+                            <input type="text" class="form-control" id="velocidad-alcanzado" name="velocidad-alcanzado" placeholder="Ej: 60">
+                        </div>
+                        <div class="mb-3">
+                            <label for="coeficiente-restitucion" class="form-label">Coeficiente de restitución (C)</label>
+                            <input type="text" class="form-control" id="coeficiente-restitucion" name="coeficiente-restitucion" placeholder="Ej: 0.3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="masa-alcanzador" class="form-label">Masa del vehículo alcanzador (kg)</label>
+                            <input type="text" class="form-control" id="masa-alcanzador" name="masa-alcanzador" placeholder="Ej: 1500">
+                        </div>
+                        <div class="mb-3">
+                            <label for="masa-alcanzado" class="form-label">Masa del vehículo alcanzado (kg)</label>
+                            <input type="text" class="form-control" id="masa-alcanzado" name="masa-alcanzado" placeholder="Ej: 1200">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Resultado
+                </div>
+                <div class="card-body" id="resultado-alcances">
+                    <!-- Resultado de ejemplo -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Imagen de referencia
+                </div>
+                <div class="card-body">
+                    <img src="img/alcanceJPG.jpg" class="img-fluid" alt="Imagen de la fase de colisión por alcance">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Valores orientativos de 'C'
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Daños</th>
+                                <th>C</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2">Leves</td>
+                                <td>0.1 - 0.3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Medios</td>
+                                <td>0.3 - 0.5</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Graves</td>
+                                <td>0.5 - 0.7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
